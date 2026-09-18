@@ -1,0 +1,1 @@
+window.chrome={storage:{local:{get:async()=>({csuPinnedFunctions:['fixtureSso']}),set:async()=>{}},onChanged:{addListener:()=>{}}}};

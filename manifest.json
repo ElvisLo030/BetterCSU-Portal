@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "正修週課表",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "將正修個人課表轉成週課表，保留各日期資料、實際鐘點與原始表格切換。",
   "content_scripts": [
     {
@@ -9,6 +9,7 @@
         "https://portal.csu.edu.tw/*"
       ],
       "js": [
+        "features.js",
         "pins.js"
       ],
       "run_at": "document_idle"
@@ -20,6 +21,16 @@
       "js": [
         "core.js",
         "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://portal.csu.edu.tw/min_stuCreditList.aspx*"
+      ],
+      "js": [
+        "features.js",
+        "credits.js"
       ],
       "run_at": "document_idle"
     }
