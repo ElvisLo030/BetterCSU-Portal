@@ -15,7 +15,11 @@ zip -X -q "$OUTPUT" \
   core.js \
   credits.js \
   features.js \
-  pins.js
+  pins.js \
+  icons/icon-16.png \
+  icons/icon-32.png \
+  icons/icon-48.png \
+  icons/icon-128.png
 
 echo "Packaged: $OUTPUT ($(du -h "$OUTPUT" | cut -f1))"
 unzip -l "$OUTPUT"

@@ -8,7 +8,7 @@
 
 適用 Chrome 或 Edge 電腦版：
 
-1. 取得含 `manifest.json` 的資料夾：clone 本 repo，或解壓 `BetterCSU-Portal-v1.0.5.zip`
+1. 取得含 `manifest.json` 的資料夾：clone 本 repo，或解壓 `BetterCSU-Portal-v1.1.0.zip`
 2. 開啟 `chrome://extensions`（Edge 用 `edge://extensions`）
 3. 打開「開發人員模式」
 4. 選「載入未封裝項目」，指向該資料夾
@@ -65,10 +65,11 @@ node --test tests/core.test.cjs tests/features.test.cjs
 ./scripts/package.sh
 ```
 
-產出 `BetterCSU-Portal-v1.0.5.zip`，只含執行檔。
+產出 `BetterCSU-Portal-v1.1.0.zip`，只含執行檔。
 
 ## 版本紀錄
 
+- **1.1.0**：Chrome 線上應用程式商店首個上架版本；補上擴充功能圖示
 - **1.0.5**：歷年學分可依修課狀況篩選
 - **1.0.4**：釘選改走一般連結，避開內容安全政策錯誤；歷年學分可篩選
 - **1.0.3**：釘選可重置；課表列高與手機版面調整；單節課列高 112px
