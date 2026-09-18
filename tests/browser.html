@@ -1,11 +1,11 @@
 <!doctype html><meta charset="utf-8"><title>擴充功能測試頁（合成資料）</title>
 <style>body{font-family:sans-serif;padding:20px}table{border-collapse:collapse}td{padding:8px;border:1px solid #ccc}</style>
 <h1>擴充功能測試頁（合成資料）</h1>
-<button id="weekly">模擬少量星期課表</button><button id="dense">模擬十三節課表</button><button id="update">模擬學期切換</button><button id="empty">模擬空課表</button>
+<button id="long">模擬長課名</button><button id="weekly">模擬少量星期課表</button><button id="dense">模擬十三節課表</button><button id="update">模擬學期切換</button><button id="empty">模擬空課表</button>
 <table id="stuTimetable"><thead><tr><td>日期</td><td>第2節</td><td>第3節</td><td>第N節</td></tr></thead><tbody><tr><td>115.09.14(一)</td><td>40BA43A測試連堂〔09:10-10:00〕@測試教室</td><td>40BA43A測試連堂〔10:10-11:00〕@測試教室</td><td></td></tr><tr><td>115.09.19(六)</td><td></td><td></td><td>80B212A週六測試〔18:00-18:45〕@測試教室</td></tr><tr><td>115.09.21(一)</td><td>40BA43A測試連堂〔09:10-10:00〕@測試教室 ★ 異動</td><td></td><td></td></tr></tbody></table>
 <script>document.querySelector('#update').onclick=()=>{document.querySelector('tbody').innerHTML='<tr><td>116.01.04(一)</td><td>40BA43A新學期測試〔09:10-10:00〕@新教室</td><td></td><td></td></tr>'};document.querySelector('#empty').onclick=()=>{document.querySelector('tbody').replaceChildren()};</script>
 <script src="../core.js"></script><script src="../content.js"></script>
 <script>
 document.querySelector('#weekly').onclick=()=>{document.querySelector('#stuTimetable').innerHTML='<thead><tr><td>節次／星期 Session Week</td><td>(二)Tue</td><td>(三)Wed</td><td>(四)Thu</td><td>(五)Fri</td></tr></thead><tbody>'+['2','3','4','5','6','7','8'].map((p,i)=>'<tr><td>'+p+'</td><td>'+(i===1||i===2?'496803A測試文學〔'+(i===1?'10:10-11:00':'11:10-12:00')+'〕@測試教室':'')+'</td><td></td><td></td><td></td></tr>').join('')+'</tbody>'};
 document.querySelector('#dense').onclick=()=>{const periods=['2','3','4','6','7','8','9','10','N','A','B','C','D'];document.querySelector('#stuTimetable').innerHTML='<thead><tr><td>日期</td>'+periods.map(p=>'<td>第'+p+'節</td>').join('')+'</tr></thead><tbody><tr><td>115.09.14(一)</td>'+periods.map((p,i)=>'<td>AAAAAAA測試課程'+p+'〔09:10-10:00〕@教室</td>').join('')+'</tr></tbody>'};
-</script>
+</script><script>document.querySelector('#long').onclick=()=>{document.querySelector('tbody tr td:nth-child(2)').textContent='AAAAAAA跨領域溝通、協商與談判技巧及專題實務應用課程〔09:10-10:00〕@測試教室';};</script>

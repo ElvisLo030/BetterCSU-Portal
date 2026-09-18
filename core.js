@@ -19,5 +19,13 @@ if(weekdays.length&&weekdays.every(d=>d!==null)){
  return {mode:'weekly',periods,days,invalidRows:rows.length-valid.length};
 }
 const periods=headers.slice(1).map(s=>s.match(/第\s*([0-9A-Za-z]+)\s*節/)?.[1]||s.trim());let invalidRows=0;const days=[];for(const row of rows){const t=date(row[0]||'');if(t===null){invalidRows++;continue;}days.push({date:t,blocks:merge(row.slice(1).map(cell),periods)});}days.sort((a,b)=>a.date-b.date);return {mode:'dated',periods,days,invalidRows};}
-const api={DAY,date,monday,cell,merge,parse};if(typeof module!=='undefined')module.exports=api;else root.CSUWeeklyCore=api;
+// 僅計算呈現用的軸，不修改原始課程；空白節次以仍顯示的星期為準。
+function view(model,selected,options={}){
+ const days=model.days.map(day=>({...day,weekday:model.mode==='weekly'?day.weekday:(day.date-selected)/DAY})).filter(d=>d.weekday>=0&&d.weekday<7);
+ const weekdays=[0,1,2,3,4,5,6].filter(d=>!(options.hiddenDays||[]).includes(d)&&(!options.hideEmptyDays||days.some(x=>x.weekday===d&&x.blocks.length)));
+ const visible=days.filter(d=>weekdays.includes(d.weekday));
+ const indices=model.periods.map((_,i)=>i).filter(i=>!options.hideEmptyPeriods||visible.some(d=>d.blocks.some(b=>i>=b.index&&i<b.index+b.span)));
+ return {weekdays,indices,days:visible};
+}
+const api={DAY,date,monday,cell,merge,parse,view};if(typeof module!=='undefined')module.exports=api;else root.CSUWeeklyCore=api;
 })(globalThis);
