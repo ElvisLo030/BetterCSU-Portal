@@ -1,0 +1,1 @@
+<span id="l_semester">1151</span><table class="styled"><tbody><tr><td>1151</td><td>40BA43A 修課成績來源的完整測試課名</td><td>不讀取的欄位</td></tr></tbody></table>

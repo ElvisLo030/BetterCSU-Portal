@@ -27,5 +27,6 @@ function view(model,selected,options={}){
  const indices=model.periods.map((_,i)=>i).filter(i=>!options.hideEmptyPeriods||visible.some(d=>d.blocks.some(b=>i>=b.index&&i<b.index+b.span)));
  return {weekdays,indices,days:visible};
 }
-const api={DAY,date,monday,cell,merge,parse,view};if(typeof module!=='undefined')module.exports=api;else root.CSUWeeklyCore=api;
+function courseNames(rows,semester){const names=Object.create(null),conflicts=new Set();for(const row of rows){if(row[0]?.trim()!==semester)continue;const m=row[1]?.trim().match(/^([A-Za-z0-9]{7})\s+(.+)$/s);if(!m||/…|\.\.\./.test(m[2]))continue;const name=m[2].trim();if(names[m[1]]&&names[m[1]]!==name)conflicts.add(m[1]);names[m[1]]=name;}for(const code of conflicts)delete names[code];return names;}
+const api={DAY,date,monday,cell,merge,parse,view,courseNames};if(typeof module!=='undefined')module.exports=api;else root.CSUWeeklyCore=api;
 })(globalThis);
