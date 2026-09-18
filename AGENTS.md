@@ -232,12 +232,14 @@ node --test --experimental-test-coverage tests/core.test.cjs tests/features.test
 ./scripts/package.sh
 ```
 
-產出 `BetterCSU-Portal-v<版號>.zip`，只含 `manifest.json` 與 5 個執行檔，不含測試與文件。
+產出 `BetterCSU-Portal-v<版號>.zip`，只含 `manifest.json`、5 個執行檔與 `icons/`，不含測試與文件。
 
 規則：
 
 - **ZIP 不進版控**（`.gitignore` 已排除 `*.zip`），一律由 CI 或 `package.sh` 產生。
-- 版號規則：修 bug `PATCH`、加功能 `MINOR`、破壞既有設定或權限 `MAJOR`。目前處於 `1.0.x`。
+- 版號規則：修 bug 與單站小功能（多一個篩選條件、多一個面板、多一個資訊入口）一律 `PATCH`；
+  `MINOR` 保留給里程碑版（首次上架、原站大改版後的全面重寫）；破壞既有設定或權限才用 `MAJOR`。
+  目前處於 `1.1.x`，`1.1.0` 為 Chrome 線上應用程式商店首個上架版本。
 - 不要手動建立 tag 或 Release，交給 CI。
 - 不要在 commit 裡只改 README 版號而忘記 `manifest.json`，兩者必須一致。
 
